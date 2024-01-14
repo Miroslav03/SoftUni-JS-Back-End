@@ -1,6 +1,6 @@
-module.exports = (arr) => `<!DOCTYPE html>
+module.exports = `
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,21 +22,12 @@ module.exports = (arr) => `<!DOCTYPE html>
         <h1>Cat Shelter</h1>
     </header>
     <main>
-        <form action="" method="POST" class="cat-form" enctype="multipart/form-data">
-            <h2>Add Cat</h2>
-            <label for="name">Name</label>
-            <input name="name" type="text" id="name">
-            <label for="description">Description</label>
-            <textarea name="description" id="description"></textarea>
-            <label for="image">Image</label>
-            <textarea name="imgURL" id="image"></textarea>
-            <label for="group">Breed</label>
-            <select name="breed" id="group">
-                ${arr.map(breed => `<option value="${breed}">${breed}</option>`)}
-            </select>
-            <button type="submit">Add Cat</button>
+        <form action="#" method="" class="cat-form">
+            <h2>Add Cat Breed</h2>
+            <label for="breed-name">Breed Name</label>
+            <input name="breed" type="text" id="breed-name">
+            <button type="submit">Add Breed</button>
         </form>
     </main>
 </body>
-
 </html>`
