@@ -9,7 +9,7 @@ const views = {
     catShelter: './views/catShelter.html',
     editCat: './views/editCat.html',
     css: './content/styles/site.css',
-    shelter:'./views/catShelter.html'
+    shelter: './views/catShelter.html'
 }
 
 const data = {
@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
                 const parsedName = queryString.parse(body);
                 fs.readFile(data.cats, 'utf-8', (err, jsonArr) => {
                     let catsArr = JSON.parse(jsonArr);
-                    catsArr = catsArr.filter(cat => (cat.name.toLowerCase()).includes(parsedName.toLowerCase()))
+                    catsArr = catsArr.filter(cat => (cat.name.toLowerCase()).includes(parsedName.name.toLowerCase()))
 
                     fs.readFile(views.shelter, 'utf-8', (err, result) => {
                         if (err) {
@@ -83,11 +83,11 @@ const server = http.createServer((req, res) => {
                             <li class="btn delete"><a href="/cats/shelter?catName=${obj.name}">New Home</a></li>
                         </ul>
                     </li>`)
-    
+
                         const placeHolder = `<h1 id="placeHolder"></h1>`
-    
+
                         const renderedTemplate = result.replace(placeHolder, catsHTML.join(''))
-                        res.writeHead(200, { 'content-type': 'text/html' });
+                        res.writeHead(200, { 'content-type': 'text/html' })
                         res.write(renderedTemplate);
                         res.end();
 
