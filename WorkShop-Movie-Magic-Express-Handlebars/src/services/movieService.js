@@ -17,3 +17,13 @@ exports.create = (movieData) => {
 exports.getAll = () => {
     return movies.slice();//Deep copy to cut the reference to original arr
 };
+
+exports.getOne = (id) => {
+    return movies.find(movie => movie._id == id);
+}
+
+exports.getStars = (id) => {
+    const movie = movies.find(movie => movie._id == id);
+    const starArr = new Array(Number(movie.rating)).fill(1);
+    return starArr;
+}
