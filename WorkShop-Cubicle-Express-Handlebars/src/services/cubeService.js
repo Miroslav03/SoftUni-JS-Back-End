@@ -1,4 +1,5 @@
 const cubes = [{
+    _id: 1,
     name: 'Gan356 Air SM',
     description: `Magnets in AirSM will not drop, and their positions will be more precise with the
     Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more
@@ -11,3 +12,8 @@ const cubes = [{
 exports.getAll = () => {
     return cubes.slice();
 };
+
+exports.addCube = (cube) => {
+    cube._id = cubes.length + 1;
+    cubes.push(cube);
+}
