@@ -1,4 +1,5 @@
 const movies = [{
+    _id: 1,
     title: 'Harry Potter and the Deathly Hallows Part 1',
     genre: 'Action',
     director: 'David Yates',
@@ -9,6 +10,7 @@ const movies = [{
 }];
 
 exports.create = (movieData) => {
+    movieData._id = movies.length + 1
     movies.push(movieData);
 };
 
