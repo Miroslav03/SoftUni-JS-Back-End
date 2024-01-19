@@ -11,7 +11,7 @@ router.post('/create', (req, res) => {
 
     movieService.create(newMovie);
 
-    res.send('MOvie ');
+    res.redirect('home');
 });
 
 module.exports = router;
