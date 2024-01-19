@@ -16,4 +16,9 @@ exports.getAll = () => {
 exports.addCube = (cube) => {
     cube._id = cubes.length + 1;
     cubes.push(cube);
-}
+};
+
+exports.getOne = (id) => {
+    const cube = cubes.filter(cube => cube._id == id);
+    return cube;
+};
