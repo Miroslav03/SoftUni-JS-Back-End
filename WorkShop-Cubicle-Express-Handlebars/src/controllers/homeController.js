@@ -5,7 +5,6 @@ const cubeServices = require('../services/cubeService')
 router.get('/', (req, res) => {
     const { title, dificultyFrom, dificultyTo } = req.query;
     const filteredCubes = cubeServices.searchCube(title, dificultyFrom, dificultyTo);
-    console.log(filteredCubes);
     res.render('home', { cubes: filteredCubes });
 });
 
