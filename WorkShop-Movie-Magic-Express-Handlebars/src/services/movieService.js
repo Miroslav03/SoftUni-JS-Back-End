@@ -19,7 +19,7 @@ const movies = [{
 }];
 
 exports.create = (movieData) => {
-    movieData._id = movies.length + 1
+    movieData._id = movies.length + 1;
     movies.push(movieData);
 };
 
@@ -45,11 +45,11 @@ exports.search = (title, genre, year) => {
     }
 
     if (genre) {
-        _movies = _movies.filter(movie => movie.genre === genre)
+        _movies = _movies.filter(movie => movie.genre === genre);
     }
 
     if (year) {
-        _movies = _movies.filter(movie => movie.year === year)
+        _movies = _movies.filter(movie => movie.year === year);
     }
 
     return _movies;

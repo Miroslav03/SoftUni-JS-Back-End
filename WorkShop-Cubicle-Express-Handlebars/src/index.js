@@ -8,7 +8,7 @@ const configExpress = require('./config/expressConfig')(app);
 const configHandlebars = require('./config/handlebars')(app);
 
 
-app.use(router)
+app.use(router);
 
 
 app.listen(PORT, () => {

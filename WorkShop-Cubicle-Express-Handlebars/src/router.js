@@ -8,7 +8,7 @@ router.use(homeController);
 router.use(cubeController);
 
 router.get('*', (req, res) => {
-    res.render('404')
+    res.render('404');
 });
 
 module.exports = router;

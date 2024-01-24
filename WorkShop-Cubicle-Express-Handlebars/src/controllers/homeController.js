@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const cubeServices = require('../services/cubeService')
+const cubeServices = require('../services/cubeService');
 
 router.get('/', (req, res) => {
     const { title, dificultyFrom, dificultyTo } = req.query;
@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-    res.render('about')
+    res.render('about');
 });
 
 module.exports = router;

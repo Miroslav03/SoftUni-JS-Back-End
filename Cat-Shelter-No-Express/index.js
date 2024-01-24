@@ -18,7 +18,7 @@ const data = {
 }
 
 const server = http.createServer((req, res) => {
-    const parsedUrl = url.parse(req.url, true)
+    const parsedUrl = url.parse(req.url, true);
     const pathName = parsedUrl.pathname;
 
     if (req.url === '/') {
@@ -45,11 +45,11 @@ const server = http.createServer((req, res) => {
                         <li class="btn edit"><a href="/cats/edit?catName=${obj.name}">Change Info</a></li>
                         <li class="btn delete"><a href="/cats/shelter?catName=${obj.name}">New Home</a></li>
                     </ul>
-                </li>`)
+                </li>`);
 
-                    const placeHolder = `<li id="cats"></li>`
+                    const placeHolder = `<li id="cats"></li>`;
 
-                    const renderedTemplate = result.replace(placeHolder, catsHTML.join(''))
+                    const renderedTemplate = result.replace(placeHolder, catsHTML.join(''));
                     res.writeHead(200, { 'content-type': 'text/html' });
                     res.write(renderedTemplate);
                     res.end();
@@ -82,12 +82,12 @@ const server = http.createServer((req, res) => {
                             <li class="btn edit"><a href="/cats/edit?catName=${obj.name}">Change Info</a></li>
                             <li class="btn delete"><a href="/cats/shelter?catName=${obj.name}">New Home</a></li>
                         </ul>
-                    </li>`)
+                    </li>`);
 
-                        const placeHolder = `<h1 id="placeHolder"></h1>`
+                        const placeHolder = `<h1 id="placeHolder"></h1>`;
 
-                        const renderedTemplate = result.replace(placeHolder, catsHTML.join(''))
-                        res.writeHead(200, { 'content-type': 'text/html' })
+                        const renderedTemplate = result.replace(placeHolder, catsHTML.join(''));
+                        res.writeHead(200, { 'content-type': 'text/html' });
                         res.write(renderedTemplate);
                         res.end();
 
@@ -103,8 +103,8 @@ const server = http.createServer((req, res) => {
                 return res.end();
             }
 
-            res.writeHead(200, { 'content-type': 'text/css' })
-            res.write(result)
+            res.writeHead(200, { 'content-type': 'text/css' });
+            res.write(result);
             res.end();
         })
     } else if (req.url === '/cats/add-cat') {
@@ -134,7 +134,7 @@ const server = http.createServer((req, res) => {
 
             })
         } else if (req.method === 'POST') {
-            let body = ''
+            let body = '';
 
             req.on('data', (chunk) => {
                 body += chunk;
@@ -151,7 +151,7 @@ const server = http.createServer((req, res) => {
                             req.statusCode = 404;
                             return res.end();
                         }
-                        res.writeHead(302, { 'location': '/' })
+                        res.writeHead(302, { 'location': '/' });
                         res.end();
                     })
                 })
@@ -223,10 +223,10 @@ const server = http.createServer((req, res) => {
                     <button>SHELTER THE CAT</button>
                     </form>`;
 
-                    const placeHolder = `<h1 id="placeHolder"></h1>`
+                    const placeHolder = `<h1 id="placeHolder"></h1>`;
                     console.log(catName);
                     const renderedTemplate = result.replace(placeHolder, template);
-                    res.writeHead(200, { 'content-type': 'text/html' })
+                    res.writeHead(200, { 'content-type': 'text/html' });
                     res.write(renderedTemplate);
                     res.end();
                 })
@@ -268,7 +268,7 @@ const server = http.createServer((req, res) => {
                     }
                     const breedsArr = JSON.parse(jsonArrBreeds);
 
-                    const breedTemplates = breedsArr.map(breed => `<option value="${breed}">${breed}</option>`).join('')
+                    const breedTemplates = breedsArr.map(breed => `<option value="${breed}">${breed}</option>`).join('');
                     fs.readFile(data.cats, 'utf-8', (err, jsonArr) => {
                         if (err) {
                             res.statusCode = 404;
@@ -295,10 +295,10 @@ const server = http.createServer((req, res) => {
 
                         const placeHolder = `<h1>PlaceHolder</h1>`;
 
-                        const readyTemplate = template.replace(placeHolder, breedTemplates)
+                        const readyTemplate = template.replace(placeHolder, breedTemplates);
 
                         const renderedTemplate = result.replace(placeHolder, readyTemplate);
-                        res.writeHead(200, { 'content-type': 'text/html' })
+                        res.writeHead(200, { 'content-type': 'text/html' });
                         res.write(renderedTemplate);
                         res.end();
                     })
@@ -331,7 +331,7 @@ const server = http.createServer((req, res) => {
                             req.statusCode = 404;
                             return res.end();
                         }
-                        res.writeHead(302, { 'location': '/' })
+                        res.writeHead(302, { 'location': '/' });
                         res.end();
                     })
                 })
