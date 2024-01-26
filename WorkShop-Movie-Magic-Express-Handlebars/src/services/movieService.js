@@ -7,12 +7,11 @@ exports.create = async (movieData) => Movie.create(movieData);
 exports.getAll = () => Movie.find();
 
 
-exports.getOne = (id) => {
-    return movies.find(movie => movie._id == id);
-};
+exports.getOne = (id) => Movie.findById(id);
 
-exports.getStars = (id) => {
-    const movie = movies.find(movie => movie._id == id);
+
+exports.getStars = async (id) => {
+    const movie =  await this.getOne(id).lean();
     const starArr = new Array(Number(movie.rating)).fill(1);
     return starArr;
 };
