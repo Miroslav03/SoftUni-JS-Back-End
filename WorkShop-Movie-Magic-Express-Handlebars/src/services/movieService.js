@@ -4,9 +4,8 @@ const Movie = require('../models/Movie');
 exports.create = async (movieData) => Movie.create(movieData);
 
 
-exports.getAll = () => {
-    return movies.slice();//Deep copy to cut the reference to original arr
-};
+exports.getAll = () => Movie.find();
+
 
 exports.getOne = (id) => {
     return movies.find(movie => movie._id == id);
