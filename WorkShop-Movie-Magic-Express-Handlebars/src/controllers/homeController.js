@@ -11,12 +11,12 @@ router.get('/about', (req, res) => {
     res.render('about');
 });
 
-router.get('/search', (req, res) => {
+router.get('/search', async (req, res) => {
     const { title, genre, year } = req.query;
 
-    const filteredMovies = movieService.search(title, genre, year);
+    const movieResult = await movieService.search(title, genre, year).lean()
 
-    res.render('search', { movies: filteredMovies });
+    res.render('search', { movies: movieResult });
 });
 
 module.exports = router;

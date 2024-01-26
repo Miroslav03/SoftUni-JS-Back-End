@@ -17,21 +17,21 @@ exports.getStars = async (id) => {
 };
 
 exports.search = (title, genre, year) => {
-    let _movies = movies.slice();
+    let query = {};
 
     if (title) {
-        _movies = _movies.filter(movie => movie.title.toLocaleLowerCase().includes(title.toLocaleLowerCase()));
+        query.title = new RegExp(title, 'i');
     }
 
     if (genre) {
-        _movies = _movies.filter(movie => movie.genre === genre);
+        query.genre = genre;
     }
 
     if (year) {
-        _movies = _movies.filter(movie => movie.year === year);
+        query.year = year;
     }
 
-    return _movies;
+    return Movie.find(query)
 };
 
 exports.attachCast = async (movieId, castId) => {
