@@ -11,7 +11,7 @@ exports.getOne = (id) => Movie.findById(id);
 
 
 exports.getStars = async (id) => {
-    const movie =  await this.getOne(id).lean();
+    const movie = await this.getOne(id).lean();
     const starArr = new Array(Number(movie.rating)).fill(1);
     return starArr;
 };
@@ -34,3 +34,8 @@ exports.search = (title, genre, year) => {
     return _movies;
 };
 
+exports.attachCast = async (movieId, castId) => {
+    const movie = await this.getOne(movieId);
+    movie.casts.push(castId);
+    return movie.save();
+};
