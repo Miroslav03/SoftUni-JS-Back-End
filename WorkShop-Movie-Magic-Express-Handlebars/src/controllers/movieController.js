@@ -26,7 +26,7 @@ router.get('/movies/:movieId', async (req, res) => {
     const starsCount = await movieService.getStars(movieId);
     movie.stars = starsCount;
 
-    res.render('details', { movie });
+    res.render('details', { movie, casts: movie.casts });
 });
 
 router.get('/movies/:movieId/attachCast', async (req, res) => {
@@ -40,7 +40,7 @@ router.get('/movies/:movieId/attachCast', async (req, res) => {
 router.post('/movies/:movieId/attachCast', async (req, res) => {
     const castId = req.body.castId;
     const movieId = req.params.movieId;
-    
+
     await movieService.attachCast(movieId, castId);
 
     res.redirect(`/movies/${movieId}/attachCast`);
