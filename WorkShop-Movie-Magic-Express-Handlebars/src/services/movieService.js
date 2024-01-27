@@ -31,7 +31,7 @@ exports.search = (title, genre, year) => {
         query.year = year;
     }
 
-    return Movie.find(query)
+    return Movie.find(query);
 };
 
 exports.attachCast = async (movieId, castId) => {

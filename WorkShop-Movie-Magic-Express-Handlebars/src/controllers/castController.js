@@ -14,7 +14,7 @@ router.post('/create', async (req, res) => {
         res.redirect('/');
     } catch (error) {
         console.log(error.message);
-        res.redirect('create')
+        res.redirect('create');
     }
 })
 
