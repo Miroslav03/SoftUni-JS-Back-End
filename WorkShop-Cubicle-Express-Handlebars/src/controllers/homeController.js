@@ -12,4 +12,8 @@ router.get('/about', (req, res) => {
     res.render('about');
 });
 
+router.get(('/attach/accessory'), (req, res) => {
+    res.render('about');
+});
+
 module.exports = router;
