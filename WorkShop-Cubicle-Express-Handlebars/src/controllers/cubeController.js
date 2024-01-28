@@ -14,11 +14,10 @@ router.post('/create', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/details/:id', (req, res) => {
+router.get('/details/:id', async (req, res) => {
     const cubeId = req.params.id;
-    const cube = cubeService.getOne(cubeId);
-    
-    res.render('details', { cubes: cube });
+    const cube = await cubeService.getOne(cubeId).lean();
+    res.render('details', { cube });
 
 });
 

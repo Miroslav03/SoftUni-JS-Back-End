@@ -20,8 +20,4 @@ exports.searchCube = (title, difficulty1, difficulty2) => {
 
 exports.addCube = (cubeData) => Cube.create(cubeData);
 
-
-exports.getOne = (id) => {
-    const cube = cubes.filter(cube => cube._id == id);
-    return cube;
-};
+exports.getOne = (cubeId) => Cube.findById(cubeId);
