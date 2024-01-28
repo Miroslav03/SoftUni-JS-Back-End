@@ -1,3 +1,6 @@
+const Cube = require('../models/Cube');
+
+
 const cubes = [{
     _id: 1,
     name: 'Gan356 Air SM',
@@ -38,10 +41,8 @@ exports.searchCube = (title, difficulty1, difficulty2) => {
     return _cubes;
 };
 
-exports.addCube = (cube) => {
-    cube._id = cubes.length + 1;
-    cubes.push(cube);
-};
+exports.addCube = (cubeData) => Cube.create(cubeData);
+
 
 exports.getOne = (id) => {
     const cube = cubes.filter(cube => cube._id == id);
