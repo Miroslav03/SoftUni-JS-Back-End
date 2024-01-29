@@ -20,4 +20,10 @@ exports.searchCube = (title, difficulty1, difficulty2) => {
 
 exports.addCube = (cubeData) => Cube.create(cubeData);
 
-exports.getOne = (cubeId) => Cube.findById(cubeId);
+exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories');
+
+exports.attach = async (cubeId, accId) => {
+    const cube = await Cube.findById(cubeId);
+    cube.accessories.push(accId);
+    return cube.save();
+}
