@@ -14,7 +14,7 @@ app.use(router);
 mongoose.connect(`mongodb://localhost:27017/cubicle`)
     .then(() => {
         console.log('DB Connected!');
-        app.listen(PORT, () => { console.log(`Server is listening on port ${PORT}`); })
+        app.listen(PORT, () => { console.log(`Server is listening on port ${PORT}`); });
     })
-    .catch(err => console.error('Cannot connect to DB!'))
+    .catch(err => console.error('Cannot connect to DB!'));
 
