@@ -18,6 +18,13 @@ userSchema.pre('save', async function () {
     this.password = hash;
 });
 
+userSchema.virtual('rePassword')
+    .set(function (value) {
+        if (value !== this.password){
+            throw new mongoose.MongooseError('Passwords must be equal!')
+        }
+    })
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
