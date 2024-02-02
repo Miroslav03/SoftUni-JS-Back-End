@@ -30,7 +30,7 @@ router.get('/movies/:movieId', async (req, res) => {
     const starsCount = await movieService.getStars(movieId);
     movie.stars = starsCount;
 
-    const isOwner = req.user._id == movie.owner;
+    const isOwner = req.user?._id == movie.owner;
 
 
     res.render('./movie/details', { movie, casts: movie.casts, isOwner });
