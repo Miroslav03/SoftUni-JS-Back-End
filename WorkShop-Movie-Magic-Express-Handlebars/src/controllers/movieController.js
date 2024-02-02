@@ -28,7 +28,7 @@ router.get('/movies/:movieId', async (req, res) => {
     const starsCount = await movieService.getStars(movieId);
     movie.stars = starsCount;
 
-    res.render('details', { movie, casts: movie.casts });
+    res.render('./movie/details', { movie, casts: movie.casts });
 });
 
 router.get('/movies/:movieId/attachCast', isAuth, async (req, res) => {

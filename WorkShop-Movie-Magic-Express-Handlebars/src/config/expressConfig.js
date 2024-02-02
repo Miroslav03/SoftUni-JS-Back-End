@@ -8,6 +8,8 @@ function configExpress(app) {
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser())
     app.use(auth)
+
+    
     return app;
 }
 
