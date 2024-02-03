@@ -4,20 +4,8 @@ const jwt = require('../lib/jwt');
 const { SECRET } = require('../config/config');
 
 
-exports.register = async (username, password, rePassword) => {
-    if (password !== rePassword) {
-        throw new Error('Passwords must match!');
-    }
+exports.register = (data) => User.create(data)
 
-    const user = await User.findOne({ username });
-
-    if(user){
-        return;
-    }
-
-    const hashedPass = await bcrypt.hash(password, 10);
-    return User.create({ username, password: hashedPass });
-};
 
 
 

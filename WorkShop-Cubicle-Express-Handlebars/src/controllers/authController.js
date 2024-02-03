@@ -10,9 +10,8 @@ router.get('/register', (req, res) => {
 
 
 router.post('/register', async (req, res) => {
-    const { username, password, rePassword } = req.body;
-    await authSercive.register(username, password, rePassword);
-
+    const userData = req.body;
+    authSercive.register(userData);
     res.redirect('/auth/login');
 });
 
