@@ -21,5 +21,18 @@ router.get('/details/:id', async (req, res) => {
 
 });
 
+router.get('/edit/:id', async (req, res) => {
+    const cubeId = req.params.id;
+    const cubeData = await cubeService.getOne(cubeId).lean();
+    res.render('editCube', { cubeData });
+});
+
+router.post('/edit/:id', async (req, res) => {
+    const cubeId = req.params.id;
+    const cubeData = req.body;
+    await cubeService.edit(cubeId, cubeData);
+    res.redirect(`/details/${cubeId}`);
+});
+
 
 module.exports = router;
