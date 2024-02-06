@@ -49,7 +49,7 @@ exports.difficultyLevelOptions = (cubeDifficulty) => {
         }
     }
 
-    return difficultyArr
+    return difficultyArr;
 };
 
-exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId)
+exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId);
