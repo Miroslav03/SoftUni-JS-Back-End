@@ -9,15 +9,18 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
     const cubeData = req.body;
+    cubeData.owner = req.user._id;
     cubeService.addCube(cubeData);
-
     res.redirect('/');
 });
 
 router.get('/details/:id', async (req, res) => {
     const cubeId = req.params.id;
     const cube = await cubeService.getOne(cubeId).lean();
-    res.render('details', { cube, accessories: cube.accessories });
+
+    const isOwner = req.user?._id == cube.owner;
+    
+    res.render('details', { cube, accessories: cube.accessories, isOwner });
 
 });
 
