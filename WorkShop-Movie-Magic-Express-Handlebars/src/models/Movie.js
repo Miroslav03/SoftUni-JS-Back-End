@@ -4,22 +4,28 @@ const movieSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
+        minLength: 5,
+        match: /[a-zA-Z0-9 ]/g,
     },
 
     genre: {
         type: String,
         required: true,
+        minLength: 5,
+        match: /[a-zA-Z0-9 ]/g,
     },
     director: {
         type: String,
         required: true,
+        minLength: 5,
+        match: /[a-zA-Z0-9 ]/g,
     },
 
     year: {
         type: Number,
         required: true,
         min: 1900,
-        max: 2030,
+        max: 2024,
     },
 
     rating: {
@@ -32,7 +38,8 @@ const movieSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        maxLength: 1000,
+        minLength: 20,
+        match: /[a-zA-Z0-9 ]/g,
     },
 
     imageUrl: {
@@ -40,16 +47,16 @@ const movieSchema = new mongoose.Schema({
         required: true,
         match: /^https?\:\/\//
     },
-    casts:[{
+    casts: [{
         type: mongoose.Types.ObjectId,
         ref: 'Cast'
     }],
-    owner:{
-        type:mongoose.Types.ObjectId,
-        ref:'User',
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
     }
 });
 
-const Movie = mongoose.model('Movie',movieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
