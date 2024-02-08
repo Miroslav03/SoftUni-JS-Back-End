@@ -15,3 +15,12 @@ exports.getErrorMessage = (err) => {
 
     return message;
 };
+
+exports.getMovieErrorMessage = (err) => {
+    let message = '';
+
+    for (const iterator of Object.values(err.errors)) {
+        message += `\n${iterator.path} - ${iterator.message}`
+    }
+    return message;
+};
