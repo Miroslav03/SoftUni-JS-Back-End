@@ -16,7 +16,7 @@ exports.getErrorMessage = (err) => {
     return message;
 };
 
-exports.getMovieErrorMessage = (err) => {
+exports.getMovieAndCastErrorMessages = (err) => {
     let message = '';
 
     for (const iterator of Object.values(err.errors)) {
@@ -24,3 +24,4 @@ exports.getMovieErrorMessage = (err) => {
     }
     return message;
 };
+
