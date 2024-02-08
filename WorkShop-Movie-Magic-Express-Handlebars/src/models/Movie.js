@@ -5,20 +5,20 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 5,
-        match: /[a-zA-Z0-9 ]/g,
+        match: [/[a-zA-Z0-9 ]/,'Invalid Title!'],
     },
 
     genre: {
         type: String,
         required: true,
         minLength: 5,
-        match: /[a-zA-Z0-9 ]/g,
+        match: [/[a-zA-Z0-9 ]/,'Invalid Genre!'],
     },
     director: {
         type: String,
         required: true,
         minLength: 5,
-        match: /[a-zA-Z0-9 ]/g,
+        match: [/[a-zA-Z0-9 ]/,'Invalid Director!'],
     },
 
     year: {
@@ -39,13 +39,13 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 20,
-        match: /[a-zA-Z0-9 ]/g,
+        match: [/[a-zA-Z0-9 ]/,'Invalid Description!'],
     },
 
     imageUrl: {
         type: String,
         required: true,
-        match: /^https?\:\/\//
+        match: [/^https?\:\/\//,'Invalid ImageUrl!']
     },
     casts: [{
         type: mongoose.Types.ObjectId,

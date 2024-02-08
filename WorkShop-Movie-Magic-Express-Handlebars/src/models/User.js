@@ -6,13 +6,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        match: /@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/g,
+        match: [/@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/,'Invalid Email Address!']
     },
     password: {
         type: String,
         required: true,
         minLength:6,
-        match:/[a-zA-Z0-9]/g,
+        match:[/[a-zA-Z0-9]/,'Invalid Password!'],
     },
 })
 
@@ -24,7 +24,7 @@ userSchema.pre('save', async function () {
 userSchema.virtual('rePassword')
     .set(function (value) {
         if (value !== this.password){
-            throw new mongoose.MongooseError('Passwords must be equal!')
+            throw new mongoose.MongooseError('Passwords must be equal!');
         }
     })
 
