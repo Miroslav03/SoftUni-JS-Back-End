@@ -1,17 +1,23 @@
 const router = require('express').Router();
 
 const cubeService = require('../services/cubeService');
+const { getErrorMessageCubeOrAccessory } = require('../utils/errorUtils');
 
 
 router.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     const cubeData = req.body;
     cubeData.owner = req.user._id;
-    cubeService.addCube(cubeData);
-    res.redirect('/');
+    try {
+        await cubeService.addCube(cubeData);
+        res.redirect('/');
+    } catch (err) {
+        const message = getErrorMessageCubeOrAccessory(err);
+        res.render('create', { error: message, ...cubeData });
+    }
 });
 
 router.get('/details/:id', async (req, res) => {
@@ -19,7 +25,7 @@ router.get('/details/:id', async (req, res) => {
     const cube = await cubeService.getOne(cubeId).lean();
 
     const isOwner = req.user?._id == cube.owner;
-    
+
     res.render('details', { cube, accessories: cube.accessories, isOwner });
 
 });
