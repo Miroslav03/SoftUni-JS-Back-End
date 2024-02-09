@@ -28,11 +28,14 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const token = await authSercive.login(username, password);
-
-    res.cookie('auth', token);
-
-    res.redirect('/');
+    try {
+        const token = await authSercive.login(username, password);
+        res.cookie('auth', token);
+        res.redirect('/');
+    } catch (err) {
+        const message = getErrorMessage(err);
+        res.render('loginPage', { error: message, username, password });
+    }
 });
 
 router.get('/logout', (req, res) => {
