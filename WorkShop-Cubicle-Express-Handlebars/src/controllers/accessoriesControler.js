@@ -2,15 +2,21 @@ const router = require('express').Router();
 
 const accessoriesServices = require('../services/accessoriesService');
 const cubeService = require('../services/cubeService');
+const { getErrorMessageCubeOrAccessory } = require('../utils/errorUtils');
 
 router.get('/create', (req, res) => {
     res.render('./accessories/createAccessory');
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     const data = req.body;
-    accessoriesServices.create(data);
-    res.redirect('/accessory/create');
+    try {
+        await accessoriesServices.create(data);
+        res.redirect('/accessory/create');
+    } catch (err) {
+        const message = getErrorMessageCubeOrAccessory(err);
+        res.render('./accessories/createAccessory', { error: message, ...data });
+    }
 });
 
 router.get('/attach/:cubeId', async (req, res) => {
