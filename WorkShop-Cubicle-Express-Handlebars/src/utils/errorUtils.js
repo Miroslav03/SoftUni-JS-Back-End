@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 exports.getErrorMessage = (err) => {
     let message = '';
 
-    if (err instanceof mongoose.MongooseError) {    
+    if (err instanceof mongoose.MongooseError) {
         if (err.errors && Object.keys(err.errors).length > 0) {
             for (const prop of Object.values(err.errors)) {
                 message += `${prop.message}`;
@@ -15,5 +15,14 @@ exports.getErrorMessage = (err) => {
         message = err.message;
     }
 
+    return message;
+};
+
+exports.getErrorMessageCubeOrAccessory = (err) => {
+    let message = '';
+
+    for (const iterator of Object.values(err.errors)) {
+        message += `${iterator.message}`
+    }
     return message;
 };
