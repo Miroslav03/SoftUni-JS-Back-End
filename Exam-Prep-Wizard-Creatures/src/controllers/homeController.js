@@ -25,7 +25,7 @@ router.get('/profile', async (req, res) => {
 
     const addedCreatures = userInfo.addedCreature;
 
-    res.render('profile', { addedCreatures });
+    res.render('profile', { addedCreatures, userInfo });
 });
 
 
