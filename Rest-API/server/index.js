@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const routes = require('./routes');
+const { auth } = require('./middlewares/authMIddleware');
 
 const app = express();
+
 app.use(cors());//Cross-Origin Requests
 app.use(express.json());//Json parser 
+app.use(auth)
 
 app.use(routes);
 
