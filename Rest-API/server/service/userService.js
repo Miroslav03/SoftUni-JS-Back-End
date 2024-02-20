@@ -6,12 +6,12 @@ const bcrypt = require('bcrypt');
 exports.register = async (userData) => {
     const user = await User.create(userData);
 
-    const token = getUserToken(userData);
+    const token = await getUserToken(user);
 
     return {
         accessToken: token,
         email: user.email,
-        id: user._id
+        _id: user._id
     };
 };
 
@@ -29,18 +29,18 @@ exports.login = async (userData) => {
         throw new Error('Email or password doesn\'t match');
     }
 
-    const token = getUserToken(userData);
+    const token = await getUserToken(user);
 
     return {
         accessToken: token,
         email: user.email,
-        id: user._id
+        _id: user._id
     };
 
 };
 
-async function getUserToken(userData) {
-    const token = await jwt.sign({ email: userData.email, _id: userData._id }, SECRET);
+function getUserToken(userData) {
+    const token = jwt.sign({ _id: userData._id, email: userData.email, }, SECRET);
     return token;
 }
 
